@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Науковий центр закладу вищої освіти</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+
+</head>
+<body>
+<section class="header_wrap">
+  <header class="header">
+    <div class="logo">
+      <img src="logo.jpg" alt="Логотип">
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html" class="btn">Головна</a></li>
+        <li><a href="index1.html" class="btn">Досягнення</a></li>
+        
+        <li><a href="index2.html" class="btn">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="intro">
+    <div class="intro-content">
+        <h1>Галерея Картинок</h1>
+    </div>
+</section>
+  
+<div class="slider-container">
+    <div class="slider">
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2">
+      <img src="image3.jpg" alt="Image 3">
+      <img src="image4.jpg" alt="Image 4">
+      <img src="image5.jpg" alt="Image 5">
+      <!-- Додайте додаткові зображення тут -->
+    </div>
+  </div>
+  <div class="slider-navigation">
+    <button class="prev-button"><</button>
+    <button class="next-button">></button>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.querySelector('.slider');
+  const prevButton = document.querySelector('.prev-button');
+  const nextButton = document.querySelector('.next-button');
+  let currentSlide = 0;
+
+  prevButton.addEventListener('click', function() {
+    currentSlide = (currentSlide - 1 + slider.children.length) % slider.children.length;
+    updateSliderPosition();
+  });
+
+  nextButton.addEventListener('click', function() {
+    currentSlide = (currentSlide + 1) % slider.children.length;
+    updateSliderPosition();
+  });
+
+  function updateSliderPosition() {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+  function startSlideInterval() {
+    slideInterval = setInterval(function() {
+      currentSlide = (currentSlide + 1) % slider.children.length;
+      updateSliderPosition();
+    }, 3000); // Час затримки між автоматичними перемиканнями слайдів (у мілісекундах)
+  }
+
+  function resetSlideInterval() {
+    clearInterval(slideInterval);
+    startSlideInterval();
+  }
+
+  startSlideInterval();
+
+});
+
+</script>  
+
+ <footer>
+    <p><a href="https://nupp.edu.ua/">© «Полтавська політехніка імені Юрія Кондратюка»</a></p>
+</footer>
+</body>
+</html>
